@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "rootDir": "packages",
+    "noImplicitAny": true,
+    "module": "CommonJS",
+    "target": "es6",
+    "moduleResolution": "Node",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "packages/typings.d.ts"
+    ],
+    "outDir": "build",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true
+  },
+  "files": [
+    "packages/typings.d.ts"
+  ],
+  "include": [
+    "packages/index.ts"
+  ]
+}
