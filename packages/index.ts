@@ -1,0 +1,1 @@
+export { WebdriverIOComparisonService } from './service/';

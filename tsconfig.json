@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "rootDir": "packages",
+    "baseUrl": "packages",
     "noImplicitAny": true,
     "module": "CommonJS",
     "target": "es6",
     "moduleResolution": "Node",
     "types": [
-      "node"
+      "node",
+      "webdriverio",
+      "jasmine"
     ],
     "typeRoots": [
       "node_modules/@types",
@@ -21,6 +23,9 @@
     "packages/typings.d.ts"
   ],
   "include": [
-    "packages/index.ts"
+    "packages/**/*.ts"
+  ],
+  "exclude": [
+    "/node_modules/"
   ]
 }
