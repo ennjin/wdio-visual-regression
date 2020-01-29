@@ -1,1 +1,1 @@
-export { WebdriverIOComparisonService } from './service/';
+export { ComparisonService } from './service/';

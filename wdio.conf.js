@@ -1,10 +1,10 @@
-const { WebdriverIOComparisonService } = require('./build');
+const { ComparisonService } = require('./build');
 
 
 exports.config = {
   runner: 'local',
   specs: [
-    'e2e/**/*.spec.ts'
+    'e2e/**/*.e2e-spec.ts'
   ],
   capabilities: [{
     maxInstances: 5,
@@ -19,9 +19,7 @@ exports.config = {
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
   services: [
-    [WebdriverIOComparisonService, {
-      folder: './e2e'
-    }],
+    [ComparisonService],
     'selenium-standalone'
   ],
   framework: 'jasmine',
