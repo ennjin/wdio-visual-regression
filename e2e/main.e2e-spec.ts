@@ -1,5 +1,9 @@
+/// <reference types="webdriverio" />
+
 describe('Visual regression', () => {
-  it('Should working', () => {
-    expect(1).toBe(1);
+  it('Should check element', async () => {
+    await browser.url(browser.config.baseUrl);
+    const body = await browser.$('body');
+    (body as any).match();
   });
 });

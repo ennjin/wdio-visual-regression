@@ -7,20 +7,20 @@ exports.config = {
     'e2e/**/*.e2e-spec.ts'
   ],
   capabilities: [{
-    maxInstances: 5,
+    maxInstances: 1,
     browserName: 'chrome',
     'goog:chromeOptions': {
-      args: ['--headless', '--disable-gpu'],
+      args: ['--headless', '--disable-gpu']
     }
   }],
-  logLevel: 'silent',
+  logLevel: 'info',
   baseUrl: 'http://example.com/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
   services: [
-    [ComparisonService],
-    'selenium-standalone'
+    'selenium-standalone',
+    [ComparisonService]
   ],
   framework: 'jasmine',
   reporters: ['spec'],
@@ -28,6 +28,6 @@ exports.config = {
     defaultTimeoutInterval: 60000,
   },
   before: () => {
-    require('ts-node').register({ project: 'e2e/tsconfig.e2e.json' })
+    require('ts-node').register({ project: 'e2e/tsconfig.e2e.json' });
   }
 }

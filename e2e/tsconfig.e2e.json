@@ -2,6 +2,14 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "../out-e2e"
-  }
+    "outDir": "../out-tsc/e2e"
+  },
+  "include": [
+    "**/*.e2e-spec.ts"
+  ],
+  "types": [
+    "jasmine",
+    "node",
+    "webdriverio"
+  ]
 }

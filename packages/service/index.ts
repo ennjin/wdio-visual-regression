@@ -1,4 +1,4 @@
-import { resolve  } from 'path';
+import { resolve } from 'path';
 
 import { ServiceOptions } from '../interfaces';
 import { checkAndCreateFolder } from '../utils';
@@ -14,7 +14,9 @@ export class ComparisonService {
     this.config = { ...this.config, ...config };
   }
 
-  onPrepare() {
+  async before() {
     checkAndCreateFolder(this.config.folder);
+
+    // browser.addCommand('matchElement', () => {});
   }
 }

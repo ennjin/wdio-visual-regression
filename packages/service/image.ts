@@ -1,3 +1,1 @@
-export class Image {
-  // pass  
-}
+// import compare from 'resemblejs/compareImages';
