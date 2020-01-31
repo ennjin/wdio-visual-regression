@@ -1,22 +1,27 @@
 import { resolve } from 'path';
 
-import { ServiceOptions } from '../interfaces';
+import { Config, DEFAULT_FOLDER, SUBFOLDERS } from './config';
+import { ServiceOptions } from './models';
 import { checkAndCreateFolder } from '../utils';
-import { DEFAULT_FOLDER } from '../constants';
 
 
 export class ComparisonService {
-  private config: Partial<ServiceOptions> = {
-    folder: resolve(process.cwd(), DEFAULT_FOLDER)
-  };
+  private config: Config = Config.get();
   
-  constructor(config: ServiceOptions) {
-    this.config = { ...this.config, ...config };
+  constructor(options: ServiceOptions) {
+    this.config.patch({ folder: options?.folder ?? DEFAULT_FOLDER })
   }
 
-  async before() {
+  before() {
+    this.setupFolders();
+  }
+
+  private setupFolders(): void {
     checkAndCreateFolder(this.config.folder);
 
-    // browser.addCommand('matchElement', () => {});
+    for (const i of SUBFOLDERS) {
+      const path = resolve(this.config.folder, i);
+      checkAndCreateFolder(path);
+    }
   }
 }

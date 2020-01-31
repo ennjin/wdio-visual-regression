@@ -1,3 +1,9 @@
+# Build
 /build
+
+# Dependecies
 /node_modules
-/regression
+
+# Regression images
+/regression/actual
+/regression/diff

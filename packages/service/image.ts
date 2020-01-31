@@ -1,1 +1,3 @@
-// import compare from 'resemblejs/compareImages';
+export class Image {
+// TODO
+}

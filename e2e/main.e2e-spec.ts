@@ -3,7 +3,6 @@
 describe('Visual regression', () => {
   it('Should check element', async () => {
     await browser.url(browser.config.baseUrl);
-    const body = await browser.$('body');
-    (body as any).match();
+    // const body = await browser.$('body');
   });
 });

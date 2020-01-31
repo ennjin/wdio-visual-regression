@@ -13,7 +13,7 @@ exports.config = {
       args: ['--headless', '--disable-gpu']
     }
   }],
-  logLevel: 'info',
+  logLevel: 'silent',
   baseUrl: 'http://example.com/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
