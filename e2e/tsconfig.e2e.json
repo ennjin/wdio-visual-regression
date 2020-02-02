@@ -2,7 +2,8 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "../out-tsc/e2e"
+    "outDir": "../out-tsc/e2e",
+    "allowJs": true
   },
   "include": [
     "**/*.e2e-spec.ts"
