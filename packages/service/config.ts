@@ -2,12 +2,17 @@ import { ServiceOptions } from './models';
 
 
 export const DEFAULT_FOLDER = 'regression';
-export const SUBFOLDERS = ['actual', 'expected', 'diff'];
+
+export enum Subfolder {
+  ACTUAL = 'actual',
+  DIFF = 'diff',
+  EXPECTED = 'expected'
+}
 
 export class Config {
   private static instance: Config;
   private options: ServiceOptions;
-  
+
   get folder(): string {
     return this.options.folder;
   }
@@ -26,4 +31,3 @@ export class Config {
     this.options = { ...this.options, ...value };
   }
 }
-

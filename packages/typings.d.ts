@@ -10,7 +10,7 @@ declare module 'resemblejs/compareImages' {
       height: number;
     };
     rawMisMatchPercentage: number;
-    misMatchPercentage: number;
+    misMatchPercentage: string;
     diffBounds: {
       top: number;
       left: number;
