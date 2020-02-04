@@ -35,4 +35,4 @@ npm run e2e
 * [Resemble.js](https://github.com/rsmbl/Resemble.js) - Image analysis and comparison
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
