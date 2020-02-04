@@ -44,6 +44,7 @@ export class ElementImage {
   }
 
   private async takeScreenshot(): Promise<Buffer> {
+    // TODO: add scroll to element before screenshot taking
     const base64 = await browser.takeScreenshot();
     const image = await loadImage(BASE64_PREFIX + base64);
 
