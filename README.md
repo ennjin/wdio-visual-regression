@@ -7,6 +7,21 @@ Visual regression tool for webdriver.io. PR's are welcome!
 - [ ] Report generation
 - [ ] Integration with Git and CI for accepting expected images
 
+### How to use
+1. Build the source code
+```bash
+npm run build
+```
+2. Import `VisualRegresson` class from build folder and provide it to service option
+```js
+const { VisualRegresson } = require('./build');
+
+services: [VisualRegresson, {/* options */}]
+```
+
+### Options
+1. *folder* (required: false, default: 'regression') - working directory
+
 ## Getting Started
 Follow to commands below for start dev environment
 
