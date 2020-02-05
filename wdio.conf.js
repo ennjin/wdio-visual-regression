@@ -1,4 +1,4 @@
-const { ComparisonService } = require('./build');
+const { VisualRegression } = require('./build');
 
 
 exports.config = {
@@ -8,10 +8,7 @@ exports.config = {
   ],
   capabilities: [{
     maxInstances: 1,
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-      args: ['--headless', '--disable-gpu']
-    }
+    browserName: 'chrome'
   }],
   logLevel: 'debug',
   baseUrl: 'http://example.com/',
@@ -20,7 +17,7 @@ exports.config = {
   connectionRetryCount: 3,
   services: [
     'selenium-standalone',
-    [ComparisonService]
+    [VisualRegression]
   ],
   framework: 'jasmine',
   reporters: ['spec'],

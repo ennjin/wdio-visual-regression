@@ -1,12 +1,12 @@
 import { resolve } from 'path';
 
 import { Config, DEFAULT_FOLDER, Subfolder } from './config';
-import { ServiceOptions } from './models';
-import { ElementImage } from './element-image';
+import { ServiceOptions } from './interfaces';
+import { ElementMatcher } from './matchers';
 import { checkAndCreateFolder } from '../utils';
 
 
-export class ComparisonService {
+export class VisualRegression {
   private config: Config = Config.get();
   
   constructor(options: ServiceOptions) {
@@ -19,8 +19,8 @@ export class ComparisonService {
     this.setupFolders();
 
     browser.addCommand('matchElement', (name: string, element: WebdriverIOAsync.Element) => {
-      const elementImage = new ElementImage(element);
-      return elementImage.compare(name);
+      const imageElement = new ElementMatcher(element);
+      return imageElement.match(name);
     });
   }
 
