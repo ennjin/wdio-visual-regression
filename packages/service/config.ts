@@ -1,4 +1,4 @@
-import { ServiceOptions } from './models';
+import { ServiceOptions } from './interfaces';
 
 
 export const DEFAULT_FOLDER = 'regression';
