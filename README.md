@@ -12,11 +12,11 @@ Visual regression tool for webdriver.io. PR's are welcome!
 ```bash
 npm run build
 ```
-2. Import `VisualRegresson` class from build folder and provide it to service option
+2. Import `VisualRegression` class from build folder and provide it to service option
 ```js
-const { VisualRegresson } = require('./build');
+const { VisualRegression } = require('./build');
 
-services: [VisualRegresson, {/* options */}]
+services: [VisualRegression, {/* options */}]
 ```
 
 ### Options
