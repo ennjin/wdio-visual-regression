@@ -25,7 +25,7 @@ exports.config = {
 ```
 **Note:** You can see available options [here](docs/OPTIONS.md)
 
-4. Use available commands:
+3. Use available commands:
 ```ts
 browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<Number>
 ```
