@@ -8,7 +8,7 @@
     "start": "tsc -w",
     "lint": "eslint --ext .ts packages",
     "e2e": "wdio run wdio.conf.js",
-    "publish": "npm run build && npm publish"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "visual regression",
