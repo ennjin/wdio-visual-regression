@@ -1,15 +1,23 @@
 {
-  "name": "wio-visual-regression",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.ts",
+  "name": "wdio-visual-regression",
+  "version": "0.0.2",
+  "description": "Visual regression tool for webdriver.io",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "start": "tsc -w",
+    "lint": "eslint --ext .ts packages",
     "e2e": "wdio run wdio.conf.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "visual regression",
+    "webdriverio"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ennjin/wdio-visual-regression"
+  },
+  "author": "ennjin",
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.6.1",

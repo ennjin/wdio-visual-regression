@@ -19,8 +19,8 @@ export class VisualRegression {
     this.setupFolders();
 
     browser.addCommand('matchElement', (name: string, element: WebdriverIOAsync.Element) => {
-      const imageElement = new ElementMatcher(element);
-      return imageElement.match(name);
+      const elementMatcher = new ElementMatcher(element);
+      return elementMatcher.match(name);
     });
   }
 

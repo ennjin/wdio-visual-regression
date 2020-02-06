@@ -8,19 +8,27 @@ Visual regression tool for webdriver.io. PR's are welcome!
 - [ ] Integration with Git and CI for accepting expected images
 
 ### How to use
-1. Build the source code
+1. Install the package
 ```bash
-npm run build
+npm install --save-dev wdio-visual-regression
 ```
-2. Import `VisualRegression` class from build folder and provide it to service option
+2. Import `VisualRegression` class and add this one to service option in your webdriverio config file
 ```js
-const { VisualRegression } = require('./build');
-
-services: [VisualRegression, {/* options */}]
+const { VisualRegression } = require('wdio-visual-regression');
 ```
+3. Add `VisualRegression` class to `servcies` option
 
-### Options
-1. *folder* (required: false, default: 'regression') - working directory
+```js
+services: [
+    [VisualRegression, {/* options */}]
+]
+```
+**Note:** You can see available options [here](docs/OPTIONS.md)
+
+4. Use available commands:
+```ts
+browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<Number>
+```
 
 ## Getting Started
 Follow to commands below for start dev environment

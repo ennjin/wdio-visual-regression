@@ -7,7 +7,7 @@ import { ImageManager } from '../image-manager';
 export abstract class Matcher {
   private manager: ImageManager = new ImageManager();
 
-  abstract async takeScreenshot(): Promise<Buffer>;
+  abstract takeScreenshot(): Promise<Buffer>;
 
   async match(name: string): Promise<number> {
     let expectedImage = this.manager.getImage(name, Subfolder.EXPECTED);
