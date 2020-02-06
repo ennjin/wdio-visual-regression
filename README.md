@@ -1,6 +1,8 @@
 # wdio-visual-regression
-Visual regression tool for webdriver.io. PR's are welcome!
-**Attention:** This module in alpha phase and not recommended for production usage.
+Visual regression tool for webdriver.io.
+**Attention:** This module still development. PR's are welcome!
+
+[![npm version](https://badge.fury.io/js/wdio-visual-regression.svg)](https://badge.fury.io/js/wdio-visual-regression)
 
 ### Features
 - [x] HTML elements comparison
