@@ -1,6 +1,6 @@
 {
   "name": "wdio-visual-regression",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Visual regression tool for webdriver.io",
   "main": "./build/index.js",
   "scripts": {
