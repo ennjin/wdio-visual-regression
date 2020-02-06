@@ -2,7 +2,7 @@
   "name": "wdio-visual-regression",
   "version": "0.0.2",
   "description": "Visual regression tool for webdriver.io",
-  "main": "index.js",
+  "main": "./build/index.js",
   "scripts": {
     "build": "tsc",
     "start": "tsc -w",
@@ -16,6 +16,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ennjin/wdio-visual-regression"
+  },
+  "bugs": {
+    "url": "https://github.com/ennjin/wdio-visual-regression/issues"
   },
   "author": "ennjin",
   "license": "MIT",
@@ -36,5 +39,8 @@
     "eslint": "^6.8.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
-  }
+  },
+  "files": [
+    "build/**/*"
+  ]
 }
