@@ -15,13 +15,13 @@ npm install --save-dev wdio-visual-regression
 2. Import `VisualRegression` class and add this one to service option in your webdriverio config file
 ```js
 const { VisualRegression } = require('wdio-visual-regression');
-```
-3. Add `VisualRegression` class to `servcies` option
 
-```js
-services: [
-    [VisualRegression, {/* options */}]
-]
+exports.config = {
+  // other configuration
+    services: [
+        [VisualRegression, {/* options */}]
+    ]
+}
 ```
 **Note:** You can see available options [here](docs/OPTIONS.md)
 
