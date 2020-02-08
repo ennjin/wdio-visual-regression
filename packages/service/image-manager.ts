@@ -12,7 +12,7 @@ export class ImageManager {
     writeFileSync(path, data);
   }
 
-  getImage(name: string, subfoler: Subfolder): Buffer {
+  getImage(name: string, subfoler: Subfolder): Buffer | null {
     const path = this.resolvePath(name, subfoler);
     return existsSync(path) ? readFileSync(path) : null;
   }

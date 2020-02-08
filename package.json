@@ -1,10 +1,10 @@
 {
   "name": "wdio-visual-regression",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Visual regression tool for webdriver.io",
   "main": "./build/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node ./scripts/postbuild.js",
     "start": "tsc -w",
     "lint": "eslint --ext .ts packages",
     "e2e": "wdio run wdio.conf.js",

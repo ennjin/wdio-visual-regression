@@ -1,10 +1,14 @@
-/// <reference types="webdriverio" />
-
 describe('Visual regression', () => {
-  it('Should check element', async () => {
+  beforeEach(async() => {
     await browser.url(browser.config.baseUrl);
+  });
+
+  it('Should check element', async () => {
     const body = await browser.$('body > div');
-    // TODO: Add typings
-    expect(await (browser as any).matchElement('body', body)).toEqual(0);
+    expect(await browser.matchElement('element', body)).toEqual(0);
+  });
+
+  it('Should check viewport', async () => {
+    expect(await browser.matchViewport('viewport')).toEqual(0);
   });
 });

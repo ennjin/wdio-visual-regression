@@ -5,7 +5,9 @@ Visual regression tool for webdriver.io.
 [![npm version](https://badge.fury.io/js/wdio-visual-regression.svg)](https://badge.fury.io/js/wdio-visual-regression)
 
 ### Features
-- [x] HTML elements comparison
+- [x] Compare HTML elements
+- [x] Compare active viewport
+- [x] Creating own matcher methods
 - [ ] Report generation
 - [ ] Integration with Git and CI for accepting expected images
 
@@ -30,7 +32,10 @@ exports.config = {
 3. Use available commands:
 ```ts
 browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<Number>
+browser.matchViewport(name: string): Promise<Number>
 ```
+
+Or create and use custom match methods. See more [here](docs/CUSTOM_MATCHERS.md)
 
 ## Getting Started
 Follow to commands below for start dev environment

@@ -10,7 +10,7 @@ exports.config = {
     maxInstances: 1,
     browserName: 'chrome'
   }],
-  logLevel: 'debug',
+  logLevel: 'silent',
   baseUrl: 'http://example.com/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
@@ -25,6 +25,9 @@ exports.config = {
     defaultTimeoutInterval: 60000,
   },
   before: () => {
-    require('ts-node').register({ project: 'e2e/tsconfig.e2e.json' });
+    require('ts-node').register({
+      project: 'e2e/tsconfig.e2e.json',
+      files: true
+    });
   }
 }

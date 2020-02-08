@@ -2,13 +2,14 @@
   "compilerOptions": {
     "baseUrl": "packages",
     "noImplicitAny": true,
+    "strict": true,
     "module": "CommonJS",
     "target": "es6",
     "moduleResolution": "Node",
     "types": [
       "node",
-      "webdriverio",
-      "jasmine"
+      "jasmine",
+      "webdriverio"
     ],
     "outDir": "build",
     "emitDecoratorMetadata": true,
@@ -16,7 +17,8 @@
     "esModuleInterop": true
   },
   "include": [
-    "packages/**/*.ts"
+    "packages/**/*.ts",
+    "typings/*"
   ],
   "exclude": [
     "/node_modules/"

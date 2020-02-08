@@ -1,8 +1,8 @@
 import { resolve } from 'path';
 
-import { Config, DEFAULT_FOLDER, Subfolder } from './config';
+import { Config, Subfolder } from './config';
 import { ServiceOptions } from './interfaces';
-import { ElementMatcher } from './matchers';
+import { ElementMatcher, ViewportMacther } from './matchers';
 import { checkAndCreateFolder } from '../utils';
 
 
@@ -10,9 +10,7 @@ export class VisualRegression {
   private config: Config = Config.get();
   
   constructor(options: ServiceOptions) {
-    this.config.patch({
-      folder: options?.folder ?? DEFAULT_FOLDER
-    });
+    this.config.patch({ folder: options.folder });
   }
 
   before() {
@@ -21,6 +19,11 @@ export class VisualRegression {
     browser.addCommand('matchElement', (name: string, element: WebdriverIOAsync.Element) => {
       const elementMatcher = new ElementMatcher(element);
       return elementMatcher.match(name);
+    });
+
+    browser.addCommand('matchViewport', (name: string) => {
+      const viewportMatcher = new ViewportMacther();
+      return viewportMatcher.match(name);
     });
   }
 
