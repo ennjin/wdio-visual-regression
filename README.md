@@ -8,7 +8,7 @@ Visual regression tool for webdriver.io.
 - [x] Compare HTML elements
 - [x] Compare active viewport
 - [x] Creating own matcher methods
-- [ ] Report generation
+- [ ] Output report
 - [ ] Integration with Git and CI for accepting expected images
 
 ### How to use
