@@ -2,7 +2,7 @@ import { resolve } from 'path';
 
 import { Config, DEFAULT_FOLDER, Subfolder } from './config';
 import { ServiceOptions } from './interfaces';
-import { ElementMatcher } from './matchers';
+import { ElementMatcher, ViewportMacther } from './matchers';
 import { checkAndCreateFolder } from '../utils';
 
 
@@ -21,6 +21,11 @@ export class VisualRegression {
     browser.addCommand('matchElement', (name: string, element: WebdriverIOAsync.Element) => {
       const elementMatcher = new ElementMatcher(element);
       return elementMatcher.match(name);
+    });
+
+    browser.addCommand('matchViewport', (name: string) => {
+      const viewportMatcher = new ViewportMacther();
+      return viewportMatcher.match(name);
     });
   }
 

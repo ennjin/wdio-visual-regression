@@ -10,7 +10,7 @@ exports.config = {
     maxInstances: 1,
     browserName: 'chrome'
   }],
-  logLevel: 'debug',
+  logLevel: 'silent',
   baseUrl: 'http://example.com/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
