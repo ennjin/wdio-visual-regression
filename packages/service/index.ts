@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 
-import { Config, DEFAULT_FOLDER, Subfolder } from './config';
+import { Config, Subfolder } from './config';
 import { ServiceOptions } from './interfaces';
 import { ElementMatcher, ViewportMacther } from './matchers';
 import { checkAndCreateFolder } from '../utils';
@@ -10,9 +10,7 @@ export class VisualRegression {
   private config: Config = Config.get();
   
   constructor(options: ServiceOptions) {
-    this.config.patch({
-      folder: options?.folder ?? DEFAULT_FOLDER
-    });
+    this.config.patch({ folder: options.folder });
   }
 
   before() {

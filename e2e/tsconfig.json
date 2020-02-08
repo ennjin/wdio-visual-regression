@@ -5,6 +5,9 @@
     "outDir": "../out-tsc/e2e",
     "allowJs": true
   },
+  "files": [
+    "../typings/index.d.ts"
+  ],
   "include": [
     "**/*.e2e-spec.ts"
   ],

@@ -1,3 +1,3 @@
 export interface ServiceOptions {
-  folder: string;
+  folder?: string;
 }

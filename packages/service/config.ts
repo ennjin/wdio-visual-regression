@@ -11,10 +11,10 @@ export enum Subfolder {
 
 export class Config {
   private static instance: Config;
-  private options: ServiceOptions;
+  private options: ServiceOptions = {};
 
   get folder(): string {
-    return this.options.folder;
+    return this.options.folder ?? DEFAULT_FOLDER;
   }
 
   private constructor() { /* pass*/ };
