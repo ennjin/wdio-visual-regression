@@ -9,7 +9,7 @@ Visual regression tool for webdriver.io.
 - [x] Compare active viewport
 - [x] Creating own matcher methods
 - [ ] Output report
-- [ ] Integration with Git and CI for accepting expected images
+- [ ] Git integration
 
 ### How to use
 1. Install the package

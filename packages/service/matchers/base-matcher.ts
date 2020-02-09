@@ -1,7 +1,7 @@
 import compare from 'resemblejs/compareImages';
 
-import { Subfolder } from '../config';
-import { ImageManager } from '../image-manager';
+import { Subfolder } from '../../config';
+import { ImageManager } from '../../image-manager';
 
 
 export abstract class Matcher {

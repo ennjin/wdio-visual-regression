@@ -17,7 +17,7 @@ export class ImageManager {
     return existsSync(path) ? readFileSync(path) : null;
   }
 
-  private resolvePath(name: string, subfolder: Subfolder): string {
+  resolvePath(name: string, subfolder: Subfolder): string {
     return resolve(this.config.folder, subfolder, `${ name }.png`);
   }
 }

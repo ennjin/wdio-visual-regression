@@ -1,7 +1,9 @@
-import { ServiceOptions } from './interfaces';
+import { ServiceOptions, TestFramework } from './service/interfaces';
 
 
-export const DEFAULT_FOLDER = 'regression';
+const DEFAULT_FOLDER = 'regression';
+const AVAILABLE_MATCHERS = ['matchElement', 'matchViewport'];
+
 
 export enum Subfolder {
   ACTUAL = 'actual',
@@ -15,6 +17,20 @@ export class Config {
 
   get folder(): string {
     return this.options.folder ?? DEFAULT_FOLDER;
+  }
+
+  get customMatchers(): string[] {
+    const result = [...AVAILABLE_MATCHERS];
+    
+    if (Array.isArray(this.options.customMatchers)) {
+      result.push(...this.options.customMatchers);
+    }
+
+    return result;
+  }
+
+  get framework(): TestFramework {
+    return this.options.framework!;
   }
 
   private constructor() { /* pass*/ };
