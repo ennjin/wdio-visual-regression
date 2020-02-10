@@ -1,2 +1,2 @@
 export { ElementMatcher } from './element';
-export { ViewportMacther } from './viewport';
+export { ViewportMatcher } from './viewport';

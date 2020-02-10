@@ -4,6 +4,7 @@
 # Dependecies
 /node_modules
 
-# Regression images
+# Regression
 /regression/actual
 /regression/diff
+/regression/report.json
