@@ -1,25 +1,24 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 import { resolve } from 'path';
 
 import { ReportData } from './interfaces';
 import { jasmineContextAdapter } from './jasmine';
 import { Config, Subfolder } from '../config';
-import { ImageManager } from '../image-manager';
+import { resolvePath } from '../utils';
 
 
-const REPORT_FILENAME = 'report.json';
+export const REPORT_FILENAME = 'report.json';
 
 
 export class VisualRegressionReport {
   private config: Config = Config.get();
-  private manager: ImageManager = new ImageManager();
   private report: ReportData[] = [];
   private lastTestCase: Partial<ReportData> = { matchers: [] };
 
   saveMatcherResult(name: string, mismatch: number): void {
-    const actual = this.manager.resolvePath(name, Subfolder.ACTUAL);
-    const expected = this.manager.resolvePath(name, Subfolder.EXPECTED);
-    const diff = this.manager.resolvePath(name, Subfolder.DIFF);
+    const actual = resolvePath(name, Subfolder.ACTUAL);
+    const expected = resolvePath(name, Subfolder.EXPECTED);
+    const diff = resolvePath(name, Subfolder.DIFF);
 
     this.lastTestCase.matchers?.push({
       mismatch,
@@ -55,5 +54,13 @@ export class VisualRegressionReport {
     }
 
     writeFileSync(reportFile, JSON.stringify(data, null, 2));
+  }
+
+  clear(): void {
+    const report = resolve(this.config.folder, REPORT_FILENAME);
+
+    if (existsSync(report)) {
+      unlinkSync(report);
+    }
   }
 }

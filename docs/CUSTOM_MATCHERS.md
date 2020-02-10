@@ -16,7 +16,7 @@ class MyAwesomeMatcher extends Matcher {
 ```
 **Important:** `takeScreenshot` method must return promise of buffer
 
-3. Register custom matcher in `before` config hook
+3. Register custom matcher
 ```js
 const { MyAwesomeMatcher } = require('./my-awesome-matcher');
 
@@ -27,7 +27,12 @@ exports.config = {
             const myAwesomeMatcher = new MyAwesomeMatcher();
             return myAwesomeMatcher.match(name);
         }
-    }
+    },
+    services: [
+        [VisualRegression, {
+            customMatchers: ['matchAwesome']
+        }]
+    ]
 }
 ```
 

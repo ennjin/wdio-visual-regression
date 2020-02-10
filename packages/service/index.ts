@@ -3,8 +3,8 @@ import { resolve } from 'path';
 import { Config, Subfolder } from '../config';
 import { ServiceOptions } from './interfaces';
 import { ElementMatcher, ViewportMatcher } from './matchers';
-import { checkAndCreateFolder } from '../utils';
 import { VisualRegressionReport } from '../reporter';
+import { checkAndCreateFolder } from '../utils';
 
 
 export class VisualRegression {
@@ -18,6 +18,7 @@ export class VisualRegression {
 
   before() {
     this.setupFolders();
+    this.report.clear();
 
     browser.addCommand('matchElement', (name: string, element: WebdriverIOAsync.Element) => {
       const elementMatcher = new ElementMatcher(element);
