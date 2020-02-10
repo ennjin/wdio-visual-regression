@@ -5,6 +5,4 @@
 /node_modules
 
 # Regression
-/regression/actual
-/regression/diff
-/regression/report.json
+/e2e/regression

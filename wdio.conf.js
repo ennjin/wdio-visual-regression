@@ -1,3 +1,4 @@
+const path = require('path');
 const { VisualRegression } = require('./build');
 
 
@@ -17,7 +18,9 @@ exports.config = {
   connectionRetryCount: 3,
   services: [
     'selenium-standalone',
-    [VisualRegression]
+    [VisualRegression, {
+      folder: path.resolve(process.cwd(), './e2e/regression')
+    }]
   ],
   framework: 'jasmine',
   reporters: ['spec'],
