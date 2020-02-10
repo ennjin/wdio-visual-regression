@@ -14,7 +14,7 @@ class MyAwesomeMatcher extends Matcher {
     }
 }
 ```
-**Important:** `takeScreenshot` method must return promise of buffer
+**Important:** `takeScreenshot` method must return image as `Promise<Buffer>` type
 
 3. Register custom matcher
 ```js
