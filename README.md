@@ -8,7 +8,7 @@ Visual regression tool for webdriver.io.
 - [x] Compare HTML elements
 - [x] Compare active viewport
 - [x] Creating custom matcher methods
-- [x] Output JSON report (partial)
+- [x] Output JSON report (partial) ([example](docs/REPORT_EXAMPLE.md))
 
 ### How to use
 1. Install the package
@@ -35,6 +35,9 @@ browser.matchViewport(name: string): Promise<Number>
 ```
 
 Or create and use custom match methods. See more [here](docs/CUSTOM_MATCHERS.md)
+
+#### Output report example
+
 
 ## Getting Started
 Follow to commands below for start dev environment

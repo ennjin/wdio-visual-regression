@@ -2,13 +2,12 @@ import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 import { resolve } from 'path';
 
 import { ReportData } from './interfaces';
-import { jasmineContextAdapter } from './jasmine';
+import { jasmineContextAdapter } from './context-adapters';
 import { Config, Subfolder } from '../config';
 import { resolvePath } from '../utils';
 
 
 export const REPORT_FILENAME = 'report.json';
-
 
 export class VisualRegressionReport {
   private config: Config = Config.get();
