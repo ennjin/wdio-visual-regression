@@ -1,6 +1,5 @@
 # wdio-visual-regression
-Visual regression tool for webdriver.io.
-**Attention:** This module still development. PR's are welcome!
+Visual regression tool for webdriver.io. PR's are welcome!
 
 [![npm version](https://badge.fury.io/js/wdio-visual-regression.svg)](https://badge.fury.io/js/wdio-visual-regression)
 
@@ -35,9 +34,6 @@ browser.matchViewport(name: string): Promise<Number>
 ```
 
 Or create and use custom match methods. See more [here](docs/CUSTOM_MATCHERS.md)
-
-#### Output report example
-
 
 ## Getting Started
 Follow to commands below for start dev environment
