@@ -12,7 +12,10 @@
   },
   "keywords": [
     "visual regression",
-    "webdriverio"
+    "webdriverio",
+    "wdio-service",
+    "wdio-plugin",
+    "comparison"
   ],
   "repository": {
     "type": "git",

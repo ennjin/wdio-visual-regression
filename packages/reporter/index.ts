@@ -30,7 +30,7 @@ export class VisualRegressionReport {
   }
 
   saveTestContext(context: any): void {
-    const { passed, testName } = this.transofrmContext(context);
+    const { passed, testName } = this.transformContext(context);
     
     this.lastTestCase = { ...this.lastTestCase, passed, testName };
     this.report.push(this.lastTestCase as ReportData);
@@ -56,7 +56,7 @@ export class VisualRegressionReport {
     }
   }
 
-  private transofrmContext(context: any): Partial<TestContextResult> {
+  private transformContext(context: any): Partial<TestContextResult> {
     // TODO: Tested with mocha and jasmine
     return { testName: context.title, passed: context.passed };
   }
