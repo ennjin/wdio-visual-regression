@@ -1,8 +1,7 @@
-import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 import { resolve } from 'path';
+import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 
-import { ReportData } from './interfaces';
-import { jasmineContextAdapter } from './context-adapters';
+import { ReportData, TestContextResult } from './interfaces';
 import { Config, Subfolder } from '../config';
 import { resolvePath } from '../utils';
 
@@ -31,28 +30,22 @@ export class VisualRegressionReport {
   }
 
   saveTestContext(context: any): void {
-    // TODO: add adapters for mocha and cucumber
-    if (this.config.framework === 'jasmine') {
-      const { passed, testName } = jasmineContextAdapter(context);
-      this.lastTestCase = { ...this.lastTestCase, passed, testName };
-    }
-
+    const { passed, testName } = this.transofrmContext(context);
+    
+    this.lastTestCase = { ...this.lastTestCase, passed, testName };
     this.report.push(this.lastTestCase as ReportData);
     this.lastTestCase = { matchers: [] };
   }
 
   generate(): void {
-    let data: ReportData[] = [];
     const reportFile = resolve(this.config.folder, REPORT_FILENAME);
 
     if (existsSync(reportFile)) {
       const report = readFileSync(reportFile, { encoding: 'utf8' });
-      data = [...JSON.parse(report), ...this.report]
-    } else {
-      data = [...this.report];
+      this.report = [...JSON.parse(report), ...this.report];
     }
 
-    writeFileSync(reportFile, JSON.stringify(data, null, 2));
+    writeFileSync(reportFile, JSON.stringify(this.report, null, 2));
   }
 
   clear(): void {
@@ -61,5 +54,10 @@ export class VisualRegressionReport {
     if (existsSync(report)) {
       unlinkSync(report);
     }
+  }
+
+  private transofrmContext(context: any): Partial<TestContextResult> {
+    // TODO: Tested with mocha and jasmine
+    return { testName: context.title, passed: context.passed };
   }
 }
