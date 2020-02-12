@@ -5,7 +5,7 @@ const { VisualRegression } = require('./build');
 exports.config = {
   runner: 'local',
   specs: [
-    'e2e/**/*.e2e-spec.ts'
+    'e2e/main.e2e-spec.ts'
   ],
   capabilities: [{
     maxInstances: 1,
