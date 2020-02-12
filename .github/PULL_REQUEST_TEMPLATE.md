@@ -8,7 +8,7 @@ What kind of change does this PR introduce?
 - [ ] Code style update (formatting, local variables)
 - [ ] Refactoring (no functional changes, no api changes)
 - [ ] Documentation content changes
-- [ ] Other... Please describe:
+- [ ] Other
 
 
 ## What is the current behavior?
