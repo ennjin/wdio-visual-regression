@@ -1,9 +1,9 @@
-import { ServiceOptions, TestFramework } from './service/interfaces';
+import { ServiceOptions } from './service/interfaces';
 
 
 const DEFAULT_FOLDER = 'regression';
 const AVAILABLE_MATCHERS = ['matchElement', 'matchViewport'];
-
+const LARGE_IMAGE_THRESHOLD = 1200;
 
 export enum Subfolder {
   ACTUAL = 'actual',
@@ -19,18 +19,15 @@ export class Config {
     return this.options.folder ?? DEFAULT_FOLDER;
   }
 
-  get customMatchers(): string[] {
-    const result = [...AVAILABLE_MATCHERS];
-    
-    if (Array.isArray(this.options.customMatchers)) {
-      result.push(...this.options.customMatchers);
+  get customMatchers(): string[] {    
+    if (Array.isArray(this.options?.customMatchers)) {
+      return [...AVAILABLE_MATCHERS, ...this.options.customMatchers];
     }
-
-    return result;
+    return AVAILABLE_MATCHERS;
   }
 
-  get framework(): TestFramework {
-    return this.options.framework!;
+  get largeImageThreshold(): number {
+    return this.options.largeImageThreshold ?? LARGE_IMAGE_THRESHOLD;
   }
 
   private constructor() { /* pass*/ };

@@ -1,12 +1,12 @@
 # wdio-visual-regression
-Visual regression tool for webdriver.io. PR's are welcome!
+Visual regression tool for webdriver.io based on [resemble.js](https://github.com/rsmbl/Resemble.js). PR's are welcome!
 
 [![npm version](https://badge.fury.io/js/wdio-visual-regression.svg)](https://badge.fury.io/js/wdio-visual-regression)
 
 ### Features
 - [x] Compare HTML elements
 - [x] Compare active viewport
-- [x] Creating custom matcher methods
+- [x] Create custom matcher methods
 - [x] Output JSON report (partial) ([example](docs/REPORT_EXAMPLE.md))
 
 ### How to use
@@ -34,6 +34,8 @@ browser.matchViewport(name: string): Promise<Number>
 ```
 
 Or create and use custom match methods. See more [here](docs/CUSTOM_MATCHERS.md)
+
+Also, you can take a look example usage [here](e2e/main.e2e-spec.ts)
 
 ## Getting Started
 Follow to commands below for start dev environment
