@@ -12,8 +12,8 @@ export class VisualRegression {
   private report: VisualRegressionReport = new VisualRegressionReport();
   
   constructor(options: ServiceOptions) {
-    const { folder, customMatchers, framework } = options;
-    this.config.patch({ folder, customMatchers, framework });
+    const { folder, customMatchers, largeImageThreshold } = options;
+    this.config.patch({ folder, customMatchers, largeImageThreshold });
   }
 
   before() {

@@ -1,7 +1,7 @@
 declare module 'resemblejs/compareImages' {
   type ImageData = string | Buffer;
   
-  function compare(target: ImageData, compareWith: ImageData): Promise<CompareResult>;
+  function compare(target: ImageData, compareWith: ImageData, options?: CompareOptions): Promise<CompareResult>;
 
   interface CompareResult {
     isSameDimensions: boolean;
@@ -20,6 +20,13 @@ declare module 'resemblejs/compareImages' {
     analysisTime: number;
     getImageDataUrl(): string;
     getBuffer(): Buffer;
+  }
+
+  interface CompareOptions {
+    output?: {
+      largeImageThreshold?: number;
+      returnEarlyThreshold?: number;
+    }
   }
   
   export = compare;
