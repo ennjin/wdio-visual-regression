@@ -26,7 +26,7 @@ declare module 'resemblejs/compareImages' {
     output?: {
       largeImageThreshold?: number;
       returnEarlyThreshold?: number;
-    }
+    };
   }
   
   export = compare;
