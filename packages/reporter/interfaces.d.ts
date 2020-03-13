@@ -11,7 +11,6 @@ interface MatchCommandResult {
 export type TestContextResult = Omit<ReportData, 'matchers'>;
 
 export interface ReportData {
-  suiteName: string;
   testName: string;
   passed: boolean;
   matchers: MatchCommandResult[];
