@@ -38,15 +38,24 @@ export class VisualRegression {
   }
 
   afterTest(context: any) {
+    const testName = context.title;
+    let suiteName = '';
+    // TODO: Tested with jasmine
+    if (context.fullTitle.endsWith(testName)) {
+      suiteName = context.fullTitle.substr(0, context.fullTitle.length - testName.length).trim();
+    }
+
     // TODO: Tested with mocha and jasmine
     this.report.saveTestContext({
-      testName: context.title,
+      suiteName,
+      testName,
       passed: context.passed
     });
   }
 
   afterScenario(uri: string, feature: any, scenario: any, result: any) {
     this.report.saveTestContext({
+      suiteName: feature.document.feature.name,
       testName: scenario.name,
       passed: result.status === 'passed'
     });
