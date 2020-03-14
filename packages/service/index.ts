@@ -45,7 +45,7 @@ export class VisualRegression {
     });
   }
 
-  afterScenario(uri: string, feature: any, scenario: any, result: any) {
+  afterScenario(_uri: string, _feature: any, scenario: any, result: any) {
     this.report.saveTestContext({
       testName: scenario.name,
       passed: result.status === 'passed'
