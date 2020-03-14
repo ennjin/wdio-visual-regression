@@ -68,9 +68,3 @@ npm run e2e
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
-
-
-## Credits
-Powered by saucelabs [open source](https://saucelabs.com/solutions/open-source) license
-
-![Sauce Labs Logo](docs/images/saucelabs.png)

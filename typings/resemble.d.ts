@@ -25,7 +25,6 @@ declare module 'resemblejs/compareImages' {
   interface CompareOptions {
     output?: {
       largeImageThreshold?: number;
-      returnEarlyThreshold?: number;
     };
   }
   
