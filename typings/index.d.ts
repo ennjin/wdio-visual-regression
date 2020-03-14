@@ -5,9 +5,3 @@ declare namespace WebdriverIOAsync {
   }
 }
 
-declare namespace WebdriverIO {
-  interface BrowserObject {
-    matchElement(name: string, element: WebdriverIO.Element): number;
-    matchViewport(name: string): number;
-  }
-}
