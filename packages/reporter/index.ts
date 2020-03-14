@@ -29,10 +29,8 @@ export class VisualRegressionReport {
     });
   }
 
-  saveTestContext(context: any): void {
-    const { passed, testName } = this.transformContext(context);
-    
-    this.lastTestCase = { ...this.lastTestCase, passed, testName };
+  saveTestContext(context: Partial<TestContextResult>): void {
+    this.lastTestCase = { ...this.lastTestCase, ...context };
     this.report.push(this.lastTestCase as ReportData);
     this.lastTestCase = { matchers: [] };
   }
@@ -54,10 +52,5 @@ export class VisualRegressionReport {
     if (existsSync(report)) {
       unlinkSync(report);
     }
-  }
-
-  private transformContext(context: any): Partial<TestContextResult> {
-    // TODO: Tested with mocha and jasmine
-    return { testName: context.title, passed: context.passed };
   }
 }
