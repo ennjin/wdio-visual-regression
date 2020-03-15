@@ -11,7 +11,7 @@ exports.config = {
     maxInstances: 1,
     browserName: 'chrome'
   }],
-  logLevel: 'silent',
+  logLevel: 'error',
   baseUrl: 'http://example.com/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
@@ -19,7 +19,11 @@ exports.config = {
   services: [
     'selenium-standalone',
     [VisualRegression, {
-      folder: path.resolve(process.cwd(), './e2e/regression')
+      outputDir: path.resolve(process.cwd(), './e2e/regression'),
+      instanceFolder: ({ browserName, browserVersion }) => {
+        const [ version ] = browserVersion.split('.');
+        return `${ browserName }_${ version }`;
+      }
     }]
   ],
   framework: 'jasmine',

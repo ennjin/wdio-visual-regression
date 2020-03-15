@@ -1,9 +1,14 @@
+import { join } from 'path';
 import { ServiceOptions } from './service/interfaces';
 
 
 const DEFAULT_FOLDER = 'regression';
-const AVAILABLE_MATCHERS = ['matchElement', 'matchViewport'];
+const DEFAULT_MATCHERS = ['matchElement', 'matchViewport'];
 const LARGE_IMAGE_THRESHOLD = 1200;
+
+interface ConfigOptions extends Omit<ServiceOptions, 'instanceFolder'> { 
+  instanceFolder?: string;
+}
 
 export enum Subfolder {
   ACTUAL = 'actual',
@@ -13,17 +18,22 @@ export enum Subfolder {
 
 export class Config {
   private static instance: Config;
-  private options: ServiceOptions = {};
+  private options: ConfigOptions = {};
 
-  get folder(): string {
-    return this.options.folder ?? DEFAULT_FOLDER;
+  get outputDir(): string {
+    return this.options.outputDir ?? DEFAULT_FOLDER;
+  }
+
+  get instanceDir(): string {
+    const instanceFolder = this.options.instanceFolder ?? '';
+    return join(this.outputDir, instanceFolder);
   }
 
   get customMatchers(): string[] {    
     if (Array.isArray(this.options?.customMatchers)) {
-      return [...AVAILABLE_MATCHERS, ...this.options.customMatchers];
+      return [...DEFAULT_MATCHERS, ...this.options.customMatchers];
     }
-    return AVAILABLE_MATCHERS;
+    return DEFAULT_MATCHERS;
   }
 
   get largeImageThreshold(): number {
@@ -40,7 +50,7 @@ export class Config {
     return Config.instance;
   }
 
-  public patch(value: ServiceOptions): void {
+  public patch(value: ConfigOptions): void {
     this.options = { ...this.options, ...value };
   }
 }

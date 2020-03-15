@@ -22,5 +22,9 @@ export function getImage(name: string, subfoler: Subfolder): Buffer | null {
 
 export function resolvePath(name: string, subfolder: Subfolder): string {
   const config = Config.get();
-  return resolve(config.folder, subfolder, `${ name }.png`);
+  return resolve(config.instanceDir, subfolder, `${ name }.png`);
+}
+
+export function isCallable(fn?: Function): boolean {
+  return Object.prototype.toString.call(fn) === '[object Function]';
 }

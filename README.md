@@ -9,7 +9,7 @@ Visual regression tool for webdriver.io based on [resemble.js](https://github.co
 - [x] Compare HTML elements
 - [x] Compare active viewport
 - [x] Create custom matcher methods
-- [x] Output JSON report (partial) ([example](docs/REPORT_EXAMPLE.md))
+- [x] Output JSON report (Jasmine, Mocha, Cucumber) ([example](docs/REPORT_EXAMPLE.md))
 
 ### How to use
 1. Install the package
