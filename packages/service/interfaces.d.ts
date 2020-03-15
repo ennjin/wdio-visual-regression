@@ -1,5 +1,12 @@
+export interface BrowserInfo {
+  browserName?: string;
+  browserVersion?: string;
+  platform?: string;
+}
+
 export interface ServiceOptions {
-  folder?: string;
+  outputDir?: string;
+  instanceFolder?: (info: BrowserInfo) => string;
   customMatchers?: string[];
   largeImageThreshold?: number;
 }

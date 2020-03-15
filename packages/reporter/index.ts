@@ -36,7 +36,7 @@ export class VisualRegressionReport {
   }
 
   generate(): void {
-    const reportFile = resolve(this.config.folder, REPORT_FILENAME);
+    const reportFile = resolve(this.config.outputDir, REPORT_FILENAME);
 
     if (existsSync(reportFile)) {
       const report = readFileSync(reportFile, { encoding: 'utf8' });
@@ -47,7 +47,7 @@ export class VisualRegressionReport {
   }
 
   clear(): void {
-    const report = resolve(this.config.folder, REPORT_FILENAME);
+    const report = resolve(this.config.outputDir, REPORT_FILENAME);
 
     if (existsSync(report)) {
       unlinkSync(report);

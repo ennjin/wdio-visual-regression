@@ -28,7 +28,7 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.6.1",
-    "resemblejs": "^3.2.3"
+    "resemblejs": "^3.2.4"
   },
   "devDependencies": {
     "@types/jasmine": "^3.5.2",
