@@ -13,5 +13,6 @@ export type TestContextResult = Omit<ReportData, 'matchers'>;
 export interface ReportData {
   testName: string;
   passed: boolean;
+  browser: string;
   matchers: MatchCommandResult[];
 }

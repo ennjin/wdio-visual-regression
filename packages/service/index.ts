@@ -4,6 +4,7 @@ import { Config, Subfolder } from '../config';
 import { ServiceOptions, BrowserInfo } from './interfaces';
 import { ElementMatcher, ViewportMatcher } from './matchers';
 import { VisualRegressionReport } from '../reporter';
+import { TestContextResult } from '../reporter/interfaces';
 import { checkAndCreateFolder, isCallable } from '../utils';
 
 
@@ -14,8 +15,8 @@ export class VisualRegression {
   private instanceFolder?: (info: BrowserInfo) => string;
 
   private get browserInfo(): BrowserInfo {
-    const { browserName, browserVersion, version, platform } = browser.capabilities;
-    return { browserName, browserVersion: version ?? browserVersion,  platform };
+    const { browserName, browserVersion, version, platform, platformName } = browser.capabilities;
+    return { browserName, browserVersion: version ?? browserVersion,  platform: platform ?? platformName };
   }
   
   constructor(options: ServiceOptions) {
@@ -47,18 +48,12 @@ export class VisualRegression {
 
   // Jasmine and mocha
   afterTest(context: any) {
-    this.report.saveTestContext({
-      testName: context.title,
-      passed: context.passed
-    });
+    this.addContextToReport({ testName: context.title, passed: context.passed });
   }
 
   // Cucumber
   afterScenario(_uri: string, _feature: any, scenario: any, result: any) {
-    this.report.saveTestContext({
-      testName: scenario.name,
-      passed: result.status === 'passed'
-    });
+    this.addContextToReport({ testName: scenario.name, passed: result.status === 'passed' });
   }
 
   after() {
@@ -68,9 +63,8 @@ export class VisualRegression {
   private setupFolders(): void {
     checkAndCreateFolder(this.config.outputDir);
 
-    if (isCallable(this.instanceFolder)) {
-      const instanceFolder = this.instanceFolder!(this.browserInfo);
-      this.config.patch({ instanceFolder });
+    if (this.instanceFolder && isCallable(this.instanceFolder)) {
+      this.config.patch({ instanceFolder: this.instanceFolder(this.browserInfo) });
       checkAndCreateFolder(this.config.instanceDir);
     }
 
@@ -78,5 +72,12 @@ export class VisualRegression {
       const path = resolve(this.config.instanceDir, key);
       checkAndCreateFolder(path);
     }
+  }
+
+  private addContextToReport({ testName, passed }: Partial<TestContextResult>) {
+    const { platform, browserName, browserVersion } = this.browserInfo;
+    const version = browserVersion?.split('.')[0];
+    const browser = `${ browserName }_${ version }_${ platform }`.toLowerCase();
+    this.report.saveTestContext({ testName, passed, browser });
   }
 }

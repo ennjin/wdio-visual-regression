@@ -26,5 +26,5 @@ export function resolvePath(name: string, subfolder: Subfolder): string {
 }
 
 export function isCallable(fn?: Function): boolean {
-  return Object.prototype.toString.call(fn) === '[object Function]';
+  return typeof fn === 'function';
 }

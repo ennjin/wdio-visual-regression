@@ -7,10 +7,10 @@ exports.config = {
   specs: [
     'e2e/main.e2e-spec.ts'
   ],
-  capabilities: [{
-    maxInstances: 1,
-    browserName: 'chrome'
-  }],
+  capabilities: [
+    { browserName: 'chrome' },
+    { browserName: 'firefox' }
+  ],
   logLevel: 'error',
   baseUrl: 'http://example.com/',
   waitforTimeout: 10000,

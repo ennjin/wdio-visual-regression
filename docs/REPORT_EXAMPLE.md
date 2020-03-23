@@ -13,8 +13,9 @@
         }
       }
     ],
+    "testName": "Should check element",
     "passed": true,
-    "testName": "Should check element"
+    "browser": "chrome_80_Linux"
   },
   {
     "matchers": [
@@ -28,8 +29,9 @@
         }
       }
     ],
+    "testName": "Should check viewport",
     "passed": false,
-    "testName": "Should check viewport"
+    "browser": "chrome_80_Linux"
   }
 ]
 ```
