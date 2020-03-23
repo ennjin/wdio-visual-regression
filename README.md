@@ -31,8 +31,8 @@ exports.config = {
 
 3. Use available commands:
 ```ts
-browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<Number>
-browser.matchViewport(name: string): Promise<Number>
+browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<number>
+browser.matchViewport(name: string): Promise<number>
 ```
 
 Or create and use custom match methods. See more [here](docs/CUSTOM_MATCHERS.md)
