@@ -13,6 +13,14 @@ export class VisualRegressionReport {
   private report: ReportData[] = [];
   private lastTestCase: Partial<ReportData> = { matchers: [] };
 
+  private get reportPath(): string {
+    return resolve(this.config.outputDir, REPORT_FILENAME);
+  }
+
+  private get isReportExist(): boolean {
+    return existsSync(this.reportPath);
+  }
+
   saveMatcherResult(name: string, mismatch: number): void {
     const actual = resolvePath(name, Subfolder.ACTUAL);
     const expected = resolvePath(name, Subfolder.EXPECTED);
@@ -36,21 +44,17 @@ export class VisualRegressionReport {
   }
 
   generate(): void {
-    const reportFile = resolve(this.config.outputDir, REPORT_FILENAME);
-
-    if (existsSync(reportFile)) {
-      const report = readFileSync(reportFile, { encoding: 'utf8' });
+    if (this.isReportExist) {
+      const report = readFileSync(this.reportPath, { encoding: 'utf8' });
       this.report = [...JSON.parse(report), ...this.report];
     }
 
-    writeFileSync(reportFile, JSON.stringify(this.report, null, 2));
+    writeFileSync(this.reportPath, JSON.stringify(this.report, null, 2));
   }
 
   clear(): void {
-    const report = resolve(this.config.outputDir, REPORT_FILENAME);
-
-    if (existsSync(report)) {
-      unlinkSync(report);
+    if (this.isReportExist) {
+      unlinkSync(this.reportPath);
     }
   }
 }
