@@ -4,6 +4,7 @@ import { ServiceOptions } from './service/interfaces';
 
 const DEFAULT_FOLDER = 'regression';
 const DEFAULT_MATCHERS = ['matchElement', 'matchViewport'];
+const DEFAULT_ALLOWED_MISMATCH = 0.1;
 const LARGE_IMAGE_THRESHOLD = 1200;
 
 interface ConfigOptions extends Omit<ServiceOptions, 'instanceFolder'> { 
@@ -36,8 +37,14 @@ export class Config {
     return DEFAULT_MATCHERS;
   }
 
-  get largeImageThreshold(): number {
-    return this.options.largeImageThreshold ?? LARGE_IMAGE_THRESHOLD;
+  get allowedMismatch(): number {
+    return this.options.allowedMismatch ?? DEFAULT_ALLOWED_MISMATCH;
+  }
+
+  get ressembleOutput() {
+    return {
+      largeImageThreshold: this.options.largeImageThreshold ?? LARGE_IMAGE_THRESHOLD
+    }
   }
 
   private constructor() { /* pass*/ };

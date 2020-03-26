@@ -9,4 +9,5 @@ export interface ServiceOptions {
   instanceFolder?: (info: BrowserInfo) => string;
   customMatchers?: string[];
   largeImageThreshold?: number;
+  allowedMismatch?: number;
 }

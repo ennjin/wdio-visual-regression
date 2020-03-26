@@ -7,11 +7,6 @@ import { getImage, saveImage } from '../../utils';
 export abstract class Matcher {
   private config: Config = Config.get();
 
-  private get outputOptions() {
-    const { largeImageThreshold } = this.config;
-    return { largeImageThreshold }
-  }
-
   abstract takeScreenshot(): Promise<Buffer>;
 
   async match(name: string): Promise<number> {
@@ -23,12 +18,14 @@ export abstract class Matcher {
       expectedImage = actualImage;
     }
 
-    const result = await compare(expectedImage, actualImage, { output: this.outputOptions });
+    const result = await compare(expectedImage, actualImage, { output: this.config.ressembleOutput });
     const data = result.getBuffer();
-    const mismatch = parseFloat(result.misMatchPercentage);
+    let mismatch = parseFloat(result.misMatchPercentage);
 
-    if (mismatch > 0) {
+    if (mismatch > this.config.allowedMismatch) {
       saveImage(name, Subfolder.DIFF, data);
+    } else {
+      mismatch = 0;
     }
 
     saveImage(name, Subfolder.ACTUAL, actualImage);

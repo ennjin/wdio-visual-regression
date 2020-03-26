@@ -20,9 +20,9 @@ export class VisualRegression {
   }
   
   constructor(options: ServiceOptions) {
-    const { outputDir, customMatchers, largeImageThreshold, instanceFolder } = options;
+    const { outputDir, customMatchers, largeImageThreshold, instanceFolder, allowedMismatch } = options;
     this.instanceFolder = instanceFolder;
-    this.config.patch({ outputDir, customMatchers, largeImageThreshold });
+    this.config.patch({ outputDir, customMatchers, largeImageThreshold, allowedMismatch });
   }
 
   before() {
