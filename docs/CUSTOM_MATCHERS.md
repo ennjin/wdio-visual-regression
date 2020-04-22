@@ -36,4 +36,4 @@ exports.config = {
 }
 ```
 
-For more details see source code of [available matchers](../packages/service/matchers).
+For more details take a look at [available matchers](../packages/service/matchers).

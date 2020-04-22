@@ -1,6 +1,6 @@
 declare module 'webdriverio' {
   interface BrowserObject {
-    matchElement(name: string, element: WebdriverIOAsync.Element): Promise<number>;
+    matchElement(name: string, element: WebdriverIO.Element): Promise<number>;
     matchViewport(name: string): Promise<number>;
   }
 }

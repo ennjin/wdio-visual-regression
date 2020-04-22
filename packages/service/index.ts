@@ -29,7 +29,7 @@ export class VisualRegression {
     this.setupFolders();
     this.report.clear();
 
-    browser.addCommand('matchElement', (name: string, element: WebdriverIOAsync.Element) => {
+    browser.addCommand('matchElement', (name: string, element: WebdriverIO.Element) => {
       const elementMatcher = new ElementMatcher(element);
       return elementMatcher.match(name);
     });

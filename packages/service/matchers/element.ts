@@ -7,9 +7,9 @@ import { scrollTo, getScrollTop } from '../browser-helpers';
 const BASE64_PREFIX = 'data:image/png;base64,';
 
 export class ElementMatcher extends Matcher {
-  private element: WebdriverIOAsync.Element;
+  private element: WebdriverIO.Element;
 
-  constructor(element: WebdriverIOAsync.Element) {
+  constructor(element: WebdriverIO.Element) {
     super();
     this.element = element;
   }

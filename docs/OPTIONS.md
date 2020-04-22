@@ -6,11 +6,11 @@
 | `instanceFolder`      |`Function`|false     | undefined      | Callback to create folder by specific browser. See details below      |
 | `customMatchers`      |`string[]`|false     | [ ]            | Register your custom matchers to include it for output report         |
 | `largeImageThreshold` |`number`  |false     | 1200           | Skips pixels when the image width or height is larger than this one   |
-| `allowedMismatch`     |`number`  |false     | 0.1            | Ignore failed result if mismatch less allowed                         |
+| `allowedMismatch`     |`number`  |false     | 0.1            | Ignore failed result if mismatch percentage less than allowed         |
 
 #### instanceFolder
 
-This option allow to provide custom folder name to each browser. The callback must return custom folder name as string. For example:
+This option allow to provide custom folder name for each browser. The callback must return folder name as string. For example:
 
 ```ts
 instanceFolder: info => {
