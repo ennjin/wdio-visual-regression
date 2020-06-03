@@ -8,7 +8,7 @@ Visual regression tool for webdriver.io based on [resemble.js](https://github.co
 ### Features
 - [x] Compare HTML elements
 - [x] Compare active viewport
-- [x] Create custom matcher methods
+- [x] Custom matchers
 - [x] Output JSON report (Jasmine, Mocha, Cucumber) ([example](docs/REPORT_EXAMPLE.md))
 
 ### How to use
@@ -16,7 +16,7 @@ Visual regression tool for webdriver.io based on [resemble.js](https://github.co
 ```bash
 npm install --save-dev wdio-visual-regression
 ```
-2. Import `VisualRegression` class and add this one to service option in your webdriverio config file
+2. Import `VisualRegression` class and add it to service option in your webdriverio config file
 ```js
 const { VisualRegression } = require('wdio-visual-regression');
 
@@ -27,7 +27,7 @@ exports.config = {
     ]
 }
 ```
-**Note:** You can see available options [here](docs/OPTIONS.md)
+**Note:** You can find out more available options [here](docs/OPTIONS.md)
 
 3. Use available commands:
 ```ts
@@ -35,9 +35,9 @@ browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<n
 browser.matchViewport(name: string): Promise<number>
 ```
 
-Or create and use custom match methods. See more [here](docs/CUSTOM_MATCHERS.md)
+Or create your own custom methods for comparing anything that you need. See how to do it [here](docs/CUSTOM_MATCHERS.md)
 
-Also, you can take a look example usage [here](e2e/main.e2e-spec.ts)
+Also, you can take a look at example usage [here](e2e/main.e2e-spec.ts)
 
 ## Getting Started
 Follow to commands below for start dev environment
@@ -47,7 +47,7 @@ git clone git@github.com:ennjin/wdio-visual-regression.git
 cd wdio-visual-regression
 npm ci
 ```
-For development mode
+For start development
 ```bash
 npm run start
 ```
@@ -57,7 +57,7 @@ npm run build
 ```
 
 ## Running the tests
-For running e2e tests type command
+For running the tests type command
 ```bash
 npm run e2e
 ```
