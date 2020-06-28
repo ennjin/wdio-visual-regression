@@ -3,7 +3,7 @@ Visual regression tool for webdriver.io based on [resemble.js](https://github.co
 
 [![npm](https://img.shields.io/npm/v/wdio-visual-regression)](https://www.npmjs.com/package/wdio-visual-regression)
 [![GitHub](https://img.shields.io/github/license/ennjin/wdio-visual-regression)](https://github.com/ennjin/wdio-visual-regression/blob/master/LICENSE)
-[![Build Status](https://travis-ci.org/ennjin/wdio-visual-regression.svg?branch=master)](https://travis-ci.org/ennjin/wdio-visual-regression)
+
 
 ### Features
 - [x] Compare HTML elements
