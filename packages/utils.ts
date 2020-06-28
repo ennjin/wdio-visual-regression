@@ -25,6 +25,6 @@ export function resolvePath(name: string, subfolder: Subfolder): string {
   return resolve(config.instanceDir, subfolder, `${ name }.png`);
 }
 
-export function isCallable(fn?: Function): boolean {
+export function isFunction(fn?: Function): fn is Function {
   return typeof fn === 'function';
 }

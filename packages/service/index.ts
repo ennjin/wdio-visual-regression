@@ -5,7 +5,7 @@ import { ServiceOptions, BrowserInfo } from './interfaces';
 import { ElementMatcher, ViewportMatcher } from './matchers';
 import { VisualRegressionReport } from '../reporter';
 import { TestContextResult } from '../reporter/interfaces';
-import { checkAndCreateFolder, isCallable } from '../utils';
+import { checkAndCreateFolder, isFunction } from '../utils';
 
 
 export class VisualRegression {
@@ -26,7 +26,7 @@ export class VisualRegression {
   }
 
   before() {
-    this.setupFolders();
+    this.initFolders();
     this.report.clear();
 
     browser.addCommand('matchElement', (name: string, element: WebdriverIO.Element) => {
@@ -60,10 +60,10 @@ export class VisualRegression {
     this.report.generate();
   }
 
-  private setupFolders(): void {
+  private initFolders(): void {
     checkAndCreateFolder(this.config.outputDir);
 
-    if (this.instanceFolder && isCallable(this.instanceFolder)) {
+    if (this.instanceFolder && isFunction(this.instanceFolder)) {
       this.config.patch({ instanceFolder: this.instanceFolder(this.browserInfo) });
       checkAndCreateFolder(this.config.instanceDir);
     }

@@ -6,7 +6,7 @@ import { Config, Subfolder } from '../config';
 import { resolvePath } from '../utils';
 
 
-export const REPORT_FILENAME = 'report.json';
+const REPORT_FILENAME = 'report.json';
 
 export class VisualRegressionReport {
   private config: Config = Config.get();
@@ -22,17 +22,18 @@ export class VisualRegressionReport {
   }
 
   saveMatcherResult(name: string, mismatch: number): void {
-    const actual = resolvePath(name, Subfolder.ACTUAL);
-    const expected = resolvePath(name, Subfolder.EXPECTED);
-    const diff = resolvePath(name, Subfolder.DIFF);
+    const getExistPathOrUndefined = (subfoler: Subfolder) => {
+      const path = resolvePath(name, subfoler);
+      return existsSync(path) ? path : undefined;
+    };
 
     this.lastTestCase.matchers?.push({
       mismatch,
       fileName: `${ name }.png`,
       files: {
-        actual: existsSync(actual) ? actual: undefined,
-        expected: existsSync(expected) ? expected : undefined,
-        diff: existsSync(diff) ? diff : undefined
+        actual: getExistPathOrUndefined(Subfolder.ACTUAL),
+        expected: getExistPathOrUndefined(Subfolder.DIFF),
+        diff: getExistPathOrUndefined(Subfolder.DIFF)
       }
     });
   }
