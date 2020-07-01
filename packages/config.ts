@@ -47,7 +47,7 @@ export class Config {
     }
   }
 
-  private constructor() { /* pass*/ };
+  private constructor() { /* pass */ };
 
   public static get(): Config {
     if (!Config.instance) {
