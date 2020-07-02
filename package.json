@@ -28,7 +28,6 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^2.6.1",
-    "reflect-metadata": "^0.1.13",
     "resemblejs": "^3.2.4"
   },
   "devDependencies": {

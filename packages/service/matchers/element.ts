@@ -1,18 +1,14 @@
 import { createCanvas, loadImage } from 'canvas';
 
-import { Matcher } from './base-matcher';
 import { scrollTo, getScrollTop } from '../browser-helpers';
+import { CreateMatcher } from './matcher-decorator';
 
 
 const BASE64_PREFIX = 'data:image/png;base64,';
 
-export class ElementMatcher extends Matcher {
-  private element: WebdriverIO.Element;
-
-  constructor(element: WebdriverIO.Element) {
-    super();
-    this.element = element;
-  }
+@CreateMatcher({ name: 'matchElement' })
+export class ElementMatcher {
+  constructor(private element: WebdriverIO.Element) {}
 
   async takeScreenshot(): Promise<Buffer> {
     const { x, y, width, height } = await this.getElementRect();

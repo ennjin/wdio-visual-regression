@@ -2,18 +2,15 @@ import compare from 'resemblejs/compareImages';
 
 import { Subfolder, Config } from '../../config';
 import { getImage, saveImage } from '../../utils';
-import { MatcherManager } from './matcher-manager';
+import { ScreenshotManager } from '../interfaces';
 
 
-const MATCH_METHOD = Symbol('match');
-const TAKE_SCREENSHOT_METHOD = Symbol('takeScreenshot');
+export const MATCHER_NAME = Symbol('matcherName');
+const MATCH_METHOD = 'match';
+const TAKE_SCREENSHOT_METHOD = 'takeScreenshot';
 
 interface MatcherOptions {
   name: string;
-}
-
-interface ScreenshotManager {
-  takeScreenshot(): Promise<Buffer>;
 }
 
 async function match(filename: string, takeScreenshot: () => Promise<Buffer>): Promise<number> {
@@ -40,32 +37,25 @@ async function match(filename: string, takeScreenshot: () => Promise<Buffer>): P
   return mismatch;
 }
 
-function Matcher<T extends ScreenshotManager>(options: MatcherOptions) {
-  const config = Config.get();
-
-  if (!config.customMatchers.includes(options.name)) {
-    config.patch({ customMatchers: [...config.customMatchers, options.name] });
+function validateMatcherOptions(options: MatcherOptions): void {
+  if (!options.name) {
+    throw new Error('MatcherOptions.name is required!');
   }
+}
+
+export function CreateMatcher<T extends ScreenshotManager>(options: MatcherOptions) {
+  validateMatcherOptions(options);
 
   return (target: Function) => {
-    const matcherManager = MatcherManager.get();
-    matcherManager.addMatcher(options.name, target);
+    Reflect.set(target.prototype, MATCHER_NAME, options.name);
 
-    Object.defineProperty(target, MATCH_METHOD, {
-      async value(this: T, filename: string) {
-        if (!Object.getOwnPropertyDescriptor(this, TAKE_SCREENSHOT_METHOD)) {
+    Object.defineProperty(target.prototype, MATCH_METHOD, {
+      value(this: T, filename: string) {
+        if (!(TAKE_SCREENSHOT_METHOD in this)) {
           throw new Error('Method `takeScreenshot` must be implemented!');
         }
-        return match(filename, this.takeScreenshot);
+        return match(filename, this.takeScreenshot.bind(this));
       }
     });
   }
 };
-
-@Matcher({ name: 'matchViewport' })
-export class ViewportMatcher {
-  async takeScreenshot(): Promise<Buffer> {
-    const base64 = await browser.takeScreenshot();
-    return Buffer.from(base64, 'base64');
-  }
-}

@@ -7,7 +7,11 @@ export interface BrowserInfo {
 export interface ServiceOptions {
   outputDir?: string;
   instanceFolder?: (info: BrowserInfo) => string;
-  customMatchers?: string[];
+  customMatchers?: any[];
   largeImageThreshold?: number;
   allowedMismatch?: number;
+}
+
+export interface ScreenshotManager {
+  takeScreenshot(): Promise<Buffer>;
 }
