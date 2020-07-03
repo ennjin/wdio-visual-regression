@@ -1,5 +1,6 @@
 import { join } from 'path';
-import { ServiceOptions } from './service/interfaces';
+
+import { ServiceOptions, AnyObject } from './service/interfaces';
 import { ViewportMatcher, ElementMatcher } from './service/matchers';
 
 
@@ -31,7 +32,7 @@ export class Config {
     return join(this.outputDir, instanceFolder);
   }
 
-  get customMatchers(): any[] {    
+  get customMatchers(): (AnyObject | string)[] {    
     if (Array.isArray(this.options?.customMatchers)) {
       return [...DEFAULT_MATCHERS, ...this.options.customMatchers];
     }

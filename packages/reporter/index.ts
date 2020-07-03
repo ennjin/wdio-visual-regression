@@ -8,6 +8,7 @@ import { resolvePath } from '../utils';
 
 const REPORT_FILENAME = 'report.json';
 
+// TODO: Fix report generation
 export class VisualRegressionReport {
   private config: Config = Config.get();
   private report: ReportData[] = [];

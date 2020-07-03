@@ -1,7 +1,7 @@
-import { CreateMatcher } from './matcher-decorator';
+import { defineMatcher } from '../core/define-matcher';
 
 
-@CreateMatcher({ name: 'matchViewport' })
+@defineMatcher({ name: 'matchViewport' })
 export class ViewportMatcher {
   async takeScreenshot(): Promise<Buffer> {
     const base64 = await browser.takeScreenshot();

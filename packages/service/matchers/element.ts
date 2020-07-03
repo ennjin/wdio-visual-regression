@@ -1,12 +1,12 @@
 import { createCanvas, loadImage } from 'canvas';
 
 import { scrollTo, getScrollTop } from '../browser-helpers';
-import { CreateMatcher } from './matcher-decorator';
+import { defineMatcher } from '../core/define-matcher';
 
 
 const BASE64_PREFIX = 'data:image/png;base64,';
 
-@CreateMatcher({ name: 'matchElement' })
+@defineMatcher({ name: 'matchElement' })
 export class ElementMatcher {
   constructor(private element: WebdriverIO.Element) {}
 

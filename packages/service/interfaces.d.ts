@@ -1,3 +1,5 @@
+export type AnyObject = Record<string, any>; 
+
 export interface BrowserInfo {
   browserName?: string;
   browserVersion?: string;
@@ -7,7 +9,7 @@ export interface BrowserInfo {
 export interface ServiceOptions {
   outputDir?: string;
   instanceFolder?: (info: BrowserInfo) => string;
-  customMatchers?: any[];
+  customMatchers?: (AnyObject | string)[];
   largeImageThreshold?: number;
   allowedMismatch?: number;
 }

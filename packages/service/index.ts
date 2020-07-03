@@ -1,12 +1,12 @@
 import { resolve } from 'path';
 
-import { Config, Subfolder } from '../config';
 import { ServiceOptions, BrowserInfo } from './interfaces';
+import { Config, Subfolder } from '../config';
+// TODO: Fix import statement
+import { MATCHER_NAME } from './core/define-matcher';
+import { checkAndCreateFolder, isFunction } from '../utils';
 import { VisualRegressionReport } from '../reporter';
 import { TestContextResult } from '../reporter/interfaces';
-import { checkAndCreateFolder, isFunction } from '../utils';
-import { MATCHER_NAME } from '../service/matchers/matcher-decorator';
-import { ElementMatcher } from './matchers';
 
 
 export class VisualRegression {
@@ -33,11 +33,12 @@ export class VisualRegression {
   }
 
   afterCommand(commandName: string, args: any[], result: any) {
+    const hasMatcherName = this.config.customMatchers.includes(commandName);
     const hasMatcherClass = this.config.customMatchers
       .filter(item => typeof item === 'function' && Reflect.get(item, MATCHER_NAME) === commandName)
       .length > 0
-  
-    if (this.config.customMatchers.includes(commandName) && hasMatcherClass) {
+
+    if (hasMatcherClass || hasMatcherName) {
       this.report.saveMatcherResult(args[0], result);
     }
   }
@@ -61,7 +62,7 @@ export class VisualRegression {
       if (typeof item === 'function') {
         const matcherName = Reflect.get(item.prototype, MATCHER_NAME);
         browser.addCommand(matcherName, (name: string, ...args: any[]) => {
-          const instance = Reflect.construct(item, args, item);
+          const instance = Reflect.construct(item, args);
           return instance.match(name);
         });
       }

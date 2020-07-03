@@ -1,3 +1,5 @@
+<!-- TODO: Update documentation -->
+
 # wdio-visual-regression
 Visual regression tool for webdriver.io based on [resemble.js](https://github.com/rsmbl/Resemble.js). PR's are welcome!
 
