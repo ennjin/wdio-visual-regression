@@ -1,12 +1,15 @@
 import { resolve } from 'path';
 
 import { ServiceOptions, BrowserInfo } from './interfaces';
-import { Config, Subfolder } from '../config';
-// TODO: Fix import statement
-import { MATCHER_NAME } from './core/define-matcher';
-import { checkAndCreateFolder, isFunction } from '../utils';
-import { VisualRegressionReport } from '../reporter';
 import { TestContextResult } from '../reporter/interfaces';
+import {
+  Config,
+  VisualRegressionReport,
+  Subfolder,
+  checkAndCreateFolder,
+  isFunction,
+  MATCHER_NAME,
+} from '../internal';
 
 
 export class VisualRegression {
@@ -35,7 +38,7 @@ export class VisualRegression {
   afterCommand(commandName: string, args: any[], result: any) {
     const hasMatcherName = this.config.customMatchers.includes(commandName);
     const hasMatcherClass = this.config.customMatchers
-      .filter(item => typeof item === 'function' && Reflect.get(item, MATCHER_NAME) === commandName)
+      .filter(item => typeof item === 'function' && Reflect.get(item.prototype, MATCHER_NAME) === commandName)
       .length > 0
 
     if (hasMatcherClass || hasMatcherName) {

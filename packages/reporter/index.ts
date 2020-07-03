@@ -2,8 +2,7 @@ import { resolve } from 'path';
 import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 
 import { ReportData, TestContextResult } from './interfaces';
-import { Config, Subfolder } from '../config';
-import { resolvePath } from '../utils';
+import { Config, Subfolder, resolvePath } from '../internal';
 
 
 const REPORT_FILENAME = 'report.json';

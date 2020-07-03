@@ -1,7 +1,6 @@
 import compare from 'resemblejs/compareImages';
 
-import { Config, Subfolder } from '../../config';
-import { getImage, saveImage } from '../../utils';
+import { Config, Subfolder, getImage, saveImage } from '../../internal'
 
 
 export async function match(filename: string, takeScreenshot: () => Promise<Buffer>): Promise<number> {

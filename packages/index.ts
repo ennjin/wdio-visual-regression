@@ -1,1 +1,1 @@
-export * from './public-api';
+export { VisualRegression, defineMatcher, Matcher } from './internal';

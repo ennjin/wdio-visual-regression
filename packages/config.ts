@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 import { ServiceOptions, AnyObject } from './service/interfaces';
-import { ViewportMatcher, ElementMatcher } from './service/matchers';
+import { ViewportMatcher, ElementMatcher } from './internal';
 
 
 const DEFAULT_FOLDER = 'regression';

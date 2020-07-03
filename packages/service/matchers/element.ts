@@ -1,7 +1,6 @@
 import { createCanvas, loadImage } from 'canvas';
 
-import { scrollTo, getScrollTop } from '../browser-helpers';
-import { defineMatcher } from '../core/define-matcher';
+import { scrollTo, getScrollTop, defineMatcher } from '../../internal';
 
 
 const BASE64_PREFIX = 'data:image/png;base64,';

@@ -1,4 +1,4 @@
-import { defineMatcher } from '../core/define-matcher';
+import { defineMatcher } from '../../internal';
 
 
 @defineMatcher({ name: 'matchViewport' })

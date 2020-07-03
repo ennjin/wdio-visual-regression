@@ -1,4 +1,4 @@
-import { match } from './match';
+import { match } from '../../internal';
 import { ScreenshotManager } from '../interfaces';
 
 
@@ -16,10 +16,10 @@ function validateMatcherOptions(options: MatcherOptions): void {
   }
 }
 
-export function defineMatcher<T extends ScreenshotManager>(options: MatcherOptions) {
+export function defineMatcher(options: MatcherOptions) {
   validateMatcherOptions(options);
 
-  return (target: Function) => {
+  return <T extends ScreenshotManager>(target: Function) => {
     Reflect.set(target.prototype, MATCHER_NAME, options.name);
 
     Object.defineProperty(target.prototype, MATCH_METHOD, {

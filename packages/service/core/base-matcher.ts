@@ -1,4 +1,4 @@
-import { match } from './match';
+import { match } from '../../internal';
 
 /**
  * @deprecated Will be removed in next major release. Use `defineMatcher` decorator instead.
