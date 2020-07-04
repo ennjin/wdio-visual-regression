@@ -6,10 +6,9 @@ Visual regression tool for webdriver.io based on [resemble.js](https://github.co
 
 
 ### Features
-- [x] Compare HTML elements
-- [x] Compare active viewport
-- [x] Custom matchers
-- [x] Output JSON report (Jasmine, Mocha, Cucumber) ([example](docs/REPORT_EXAMPLE.md))
+- [x] Default matchers for compare active viewport and elements
+- [x] Simple and flexible API for creating custom matcher
+- [x] Output report (Jasmine, Mocha, Cucumber) in JSON format ([example](docs/REPORT_EXAMPLE.md))
 
 ### How to use
 1. Install the package
@@ -27,15 +26,15 @@ exports.config = {
     ]
 }
 ```
-**Note:** You can find out more available options [here](docs/OPTIONS.md)
+**Note:** You can find out all available options [here](docs/OPTIONS.md)
 
 3. Use available commands:
 ```ts
-browser.matchElement(name: string, element: WebdriverIOAsync.Element): Promise<number>
+browser.matchElement(name: string, element: WebdriverIO.Element): Promise<number>
 browser.matchViewport(name: string): Promise<number>
 ```
 
-Or create your own custom methods for comparing anything that you need. See how to do it [here](docs/CUSTOM_MATCHERS.md)
+Or create your own custom matcher for comparing anything that you need. See how to do it [here](docs/CUSTOM_MATCHERS.md)
 
 Also, you can take a look at example usage [here](e2e/main.e2e-spec.ts)
 

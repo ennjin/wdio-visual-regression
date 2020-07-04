@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { existsSync, writeFileSync, readFileSync, mkdirSync } from 'fs';
 
-import { Config, Subfolder } from './config';
+import { Config, Subfolder } from './internal';
 
 
 export function checkAndCreateFolder(path: string): void {
@@ -25,6 +25,6 @@ export function resolvePath(name: string, subfolder: Subfolder): string {
   return resolve(config.instanceDir, subfolder, `${ name }.png`);
 }
 
-export function isFunction(fn?: Function): fn is Function {
+export function isFunction(fn?: (...args: any[]) => unknown): boolean {
   return typeof fn === 'function';
 }

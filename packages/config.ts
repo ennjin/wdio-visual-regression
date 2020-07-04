@@ -1,9 +1,11 @@
 import { join } from 'path';
-import { ServiceOptions } from './service/interfaces';
+
+import { ServiceOptions, AnyObject } from './interfaces';
+import { ViewportMatcher, ElementMatcher } from './internal';
 
 
 const DEFAULT_FOLDER = 'regression';
-const DEFAULT_MATCHERS = ['matchElement', 'matchViewport'];
+const DEFAULT_MATCHERS = [ViewportMatcher, ElementMatcher];
 const DEFAULT_ALLOWED_MISMATCH = 0.1;
 const LARGE_IMAGE_THRESHOLD = 1200;
 
@@ -30,7 +32,7 @@ export class Config {
     return join(this.outputDir, instanceFolder);
   }
 
-  get customMatchers(): string[] {    
+  get customMatchers(): (AnyObject | string)[] {    
     if (Array.isArray(this.options?.customMatchers)) {
       return [...DEFAULT_MATCHERS, ...this.options.customMatchers];
     }
@@ -47,7 +49,7 @@ export class Config {
     }
   }
 
-  private constructor() { /* pass*/ };
+  private constructor() { /* pass */ }
 
   public static get(): Config {
     if (!Config.instance) {
