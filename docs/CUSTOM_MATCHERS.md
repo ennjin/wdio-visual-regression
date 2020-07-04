@@ -2,13 +2,13 @@
 
 Follow to this few simple steps for creating your own matcher method.
 
-Since version 1.3.0 there is new decorators API for creating custom matchers.
-Important! Old implementation of base class still available but is deprecated and not recommended for usage.
-It's can be mixed but this also not recommended! Base class will be removed in next major release.
+Since version 1.3.0 there is new decorators API for creating custom matchers.  
+Important! Old implementation of base class still available but is deprecated and not recommended for usage.  
+It's can be mixed but this also not recommended! Base class will be removed in next major release.  
 For more details take a look at [available matchers](../packages/service/matchers).
 
 #### New decorators API
-1. Using `defineMatcher` decorate function
+1. Using `defineMatcher` decorator function
 ```typescript
 import { defineMatcher } from 'wdio-visual-regression'; 
 
