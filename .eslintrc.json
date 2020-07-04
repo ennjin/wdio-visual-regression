@@ -14,6 +14,7 @@
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "object-curly-spacing": ["warn", "always"],
     "quotes": ["warn", "single"],
     "max-len": ["warn", 120],

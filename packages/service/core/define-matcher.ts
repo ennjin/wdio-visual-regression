@@ -1,4 +1,5 @@
 import { match } from '../../internal';
+import { AnyObject } from '../../interfaces';
 
 
 export const MATCHER_NAME = Symbol('matcherName');
@@ -22,7 +23,7 @@ function validateMatcherOptions(options: MatcherOptions): void {
 export function defineMatcher(options: MatcherOptions) {
   validateMatcherOptions(options);
 
-  return <T extends ScreenshotManager>(target: Function) => {
+  return <T extends ScreenshotManager>(target: new(...args: any[]) => AnyObject) => {
     Reflect.set(target.prototype, MATCHER_NAME, options.name);
 
     Object.defineProperty(target.prototype, MATCH_METHOD, {
@@ -34,4 +35,4 @@ export function defineMatcher(options: MatcherOptions) {
       }
     });
   }
-};
+}

@@ -25,6 +25,6 @@ export function resolvePath(name: string, subfolder: Subfolder): string {
   return resolve(config.instanceDir, subfolder, `${ name }.png`);
 }
 
-export function isFunction(fn?: Function): fn is Function {
+export function isFunction(fn?: (...args: any[]) => unknown): boolean {
   return typeof fn === 'function';
 }
