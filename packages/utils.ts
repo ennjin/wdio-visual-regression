@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { existsSync, writeFileSync, readFileSync, mkdirSync } from 'fs';
 
-import { Config, Subfolder } from './config';
+import { Config, Subfolder } from './internal';
 
 
 export function checkAndCreateFolder(path: string): void {

@@ -1,13 +1,30 @@
 import { resolve } from 'path';
 import { existsSync, readFileSync, writeFileSync, unlinkSync } from 'fs';
 
-import { ReportData, TestContextResult } from './interfaces';
-import { Config, Subfolder, resolvePath } from '../internal';
+import { Config, Subfolder, resolvePath } from './internal';
 
 
 const REPORT_FILENAME = 'report.json';
 
-// TODO: Fix report generation
+interface MatchCommandResult {
+  fileName: string;
+  mismatch: number;
+  files: {
+    actual: string | null;
+    expected: string | null;
+    diff: string | null;
+  };
+}
+
+interface ReportData {
+  testName: string;
+  passed: boolean;
+  browser: string;
+  matchers: MatchCommandResult[];
+}
+
+export type TestContextResult = Omit<ReportData, 'matchers'>;
+
 export class VisualRegressionReport {
   private config: Config = Config.get();
   private report: ReportData[] = [];
@@ -22,18 +39,18 @@ export class VisualRegressionReport {
   }
 
   saveMatcherResult(name: string, mismatch: number): void {
-    const getExistPathOrUndefined = (subfoler: Subfolder) => {
+    const getExistPathOrNull = (subfoler: Subfolder) => {
       const path = resolvePath(name, subfoler);
-      return existsSync(path) ? path : undefined;
+      return existsSync(path) ? path : null;
     };
 
     this.lastTestCase.matchers?.push({
       mismatch,
       fileName: `${ name }.png`,
       files: {
-        actual: getExistPathOrUndefined(Subfolder.ACTUAL),
-        expected: getExistPathOrUndefined(Subfolder.DIFF),
-        diff: getExistPathOrUndefined(Subfolder.DIFF)
+        actual: getExistPathOrNull(Subfolder.ACTUAL),
+        expected: getExistPathOrNull(Subfolder.EXPECTED),
+        diff: getExistPathOrNull(Subfolder.DIFF)
       }
     });
   }

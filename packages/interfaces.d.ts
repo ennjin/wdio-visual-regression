@@ -13,7 +13,3 @@ export interface ServiceOptions {
   largeImageThreshold?: number;
   allowedMismatch?: number;
 }
-
-export interface ScreenshotManager {
-  takeScreenshot(): Promise<Buffer>;
-}

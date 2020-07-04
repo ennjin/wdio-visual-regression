@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 
-import { ServiceOptions, BrowserInfo } from './interfaces';
-import { TestContextResult } from '../reporter/interfaces';
+import { ServiceOptions, BrowserInfo } from '../interfaces';
+import { TestContextResult } from '../report';
 import {
   Config,
   VisualRegressionReport,
@@ -47,8 +47,8 @@ export class VisualRegression {
   }
 
   // Jasmine and mocha
-  afterTest(context: any) {
-    this.addContextToReport({ testName: context.title, passed: context.passed });
+  afterTest({ description }: { description: string }, { passed }: { passed: boolean }) {
+    this.addContextToReport({ testName: description, passed });
   }
 
   // Cucumber

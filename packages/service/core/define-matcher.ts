@@ -1,5 +1,4 @@
 import { match } from '../../internal';
-import { ScreenshotManager } from '../interfaces';
 
 
 export const MATCHER_NAME = Symbol('matcherName');
@@ -8,6 +7,10 @@ const TAKE_SCREENSHOT_METHOD = 'takeScreenshot';
 
 interface MatcherOptions {
   name: string;
+}
+
+interface ScreenshotManager {
+  takeScreenshot(): Promise<Buffer>;
 }
 
 function validateMatcherOptions(options: MatcherOptions): void {

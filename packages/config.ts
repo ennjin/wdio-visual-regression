@@ -1,6 +1,6 @@
 import { join } from 'path';
 
-import { ServiceOptions, AnyObject } from './service/interfaces';
+import { ServiceOptions, AnyObject } from './interfaces';
 import { ViewportMatcher, ElementMatcher } from './internal';
 
 
