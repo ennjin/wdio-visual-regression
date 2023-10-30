@@ -8,9 +8,13 @@ export async function match(filename: string, takeScreenshot: () => Promise<Buff
   const actualImage = await takeScreenshot();
   let expectedImage = getImage(filename, Subfolder.EXPECTED);
   
-  if (!expectedImage) {
+  saveImage(filename, Subfolder.ACTUAL, actualImage);
+
+  if (!expectedImage && config.initiateExpectedImage) {
     saveImage(filename, Subfolder.EXPECTED, actualImage);
     expectedImage = actualImage;
+  } else if (!expectedImage && !config.initiateExpectedImage) {
+    return Number.POSITIVE_INFINITY
   }
 
   const result = await compare(expectedImage, actualImage, { output: config.ressembleOutput });
@@ -22,7 +26,5 @@ export async function match(filename: string, takeScreenshot: () => Promise<Buff
   } else {
     mismatch = 0;
   }
-
-  saveImage(filename, Subfolder.ACTUAL, actualImage);
   return mismatch;
 }
