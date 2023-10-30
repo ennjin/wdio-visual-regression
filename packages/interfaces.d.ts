@@ -12,4 +12,5 @@ export interface ServiceOptions {
   customMatchers?: (AnyObject | string)[];
   largeImageThreshold?: number;
   allowedMismatch?: number;
+  initiateExpectedImage?: boolean;
 }
