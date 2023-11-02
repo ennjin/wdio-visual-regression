@@ -10,11 +10,13 @@ export async function match(filename: string, takeScreenshot: () => Promise<Buff
   
   saveImage(filename, Subfolder.ACTUAL, actualImage);
 
-  if (!expectedImage && config.initiateExpectedImage) {
-    saveImage(filename, Subfolder.EXPECTED, actualImage);
-    expectedImage = actualImage;
-  } else if (!expectedImage && !config.initiateExpectedImage) {
-    return Number.POSITIVE_INFINITY
+  if (!expectedImage) {
+    if (config.initiateExpectedImage) {
+      saveImage(filename, Subfolder.EXPECTED, actualImage);
+      expectedImage = actualImage;
+    } else {
+      return Number.POSITIVE_INFINITY
+    }
   }
 
   const result = await compare(expectedImage, actualImage, { output: config.ressembleOutput });
