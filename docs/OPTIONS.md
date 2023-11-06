@@ -7,6 +7,7 @@
 | `customMatchers`      |`Function[]`|false     | [ ]            | Add custom matchers to webdriverio                                    |
 | `largeImageThreshold` |`number`    |false     | 1200           | Skips pixels when the image width or height is larger than this one   |
 | `allowedMismatch`     |`number`    |false     | 0.1            | Ignore failed result if mismatch percentage less than allowed         |
+| `initiateExpectedImage` |`boolean` |false     | true           | Use actual image if no expected image is provided; returns mismatch of positive infinity if set to false |
 
 #### instanceFolder
 

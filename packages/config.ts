@@ -8,6 +8,7 @@ const DEFAULT_FOLDER = 'regression';
 const DEFAULT_MATCHERS = [ViewportMatcher, ElementMatcher];
 const DEFAULT_ALLOWED_MISMATCH = 0.1;
 const LARGE_IMAGE_THRESHOLD = 1200;
+const DEFAULT_INITIATE_EXPECTED_IMAGE = true;
 
 interface ConfigOptions extends Omit<ServiceOptions, 'instanceFolder'> { 
   instanceFolder?: string;
@@ -47,6 +48,10 @@ export class Config {
     return {
       largeImageThreshold: this.options.largeImageThreshold ?? LARGE_IMAGE_THRESHOLD
     }
+  }
+
+  get initiateExpectedImage(): boolean {
+    return this.options.initiateExpectedImage ?? DEFAULT_INITIATE_EXPECTED_IMAGE
   }
 
   private constructor() { /* pass */ }
